@@ -1,0 +1,19 @@
+{
+  "name": "chirper",
+  "version": "1.0.0",
+  "description": "Tweet clone",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-plumber": "^1.0.1",
+    "reactify": "^1.1.1",
+    "through2": "^2.0.0"
+  }
+}

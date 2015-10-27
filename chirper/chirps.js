@@ -7,6 +7,7 @@ var router = require('express').Router(),
 router.route('/api/chirps')
   .all(login.required)
   .get(function (req, res) {
+    console.log(chirps.toArray());
     res.json(chirps.toArray());
   })
   .post(function (req, res, next) {

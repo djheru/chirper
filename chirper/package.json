@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "ejs": "^2.3.4",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "flux": "^2.1.1",
+    "object-assign": "^3.0.0"
   }
 }

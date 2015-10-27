@@ -1,3 +1,3 @@
-var events = require('events');
-console.log('hello world');
-console.log(events);
+var API = require('./api'),
+  chirps = require('./stores/chirps');
+API.fetchChirps();

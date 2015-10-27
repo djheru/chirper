@@ -10,7 +10,7 @@ var storeMethods = {
     console.log(this);
     var currentIds = this._data.map(function (m) { return m.cid; });
     arr.filter(function (item) {
-      return (currIds.indexOf(item.cid) === -1);
+      return (currentIds.indexOf(item.cid) === -1);
     }).forEach(this.add.bind(this));
 
     console.log('set data: ', this._data);

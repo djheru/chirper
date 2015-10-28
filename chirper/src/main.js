@@ -3,8 +3,7 @@ var React = require('react'),
   Route = ReactRouter.Route,
   App = require('./components/App'),
   Home = require('./components/Home'),
-  API = require('./api'),
-  chirps = require('./stores/chirps');
+  API = require('./api');
 
 var routes = (
   <Route handler={App}>

@@ -8,6 +8,7 @@ var React = require('react'),
 var routes = (
   <Route handler={App}>
     <Route name='home' path='/' handler={Home} />
+    <Route name='user' path='/user/:id' handler={Home} />
   </Route>
 );
 API.fetchChirps();

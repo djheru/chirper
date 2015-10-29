@@ -9,6 +9,12 @@ var API = {
       .then(actions.gotChirps.bind(actions));
   },
 
+  fetchUsers: function () {
+    console.log('fetch users');
+    get('/api/users')
+      .then(actions.gotUsers.bind(actions));
+  },
+
   saveChirp: function (text) {
     text = text.trim();
     if (text === '') {

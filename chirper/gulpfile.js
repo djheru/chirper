@@ -1,16 +1,16 @@
 var gulp = require('gulp'),
-  browswerify = require('browserify'),
+  browserify = require('browserify'),
   reactify = require('reactify'),
   through2 = require('through2'),
   concat = require('gulp-concat'),
   plumber = require('gulp-plumber');
 
-gulp.task('browswerify', function () {
+gulp.task('browserify', function () {
   gulp
     .src('./src/main.js')
     .pipe(plumber())
     .pipe(through2.obj(function (file, enc, next) {
-      browswerify(file.path, {'debug': true})
+      browserify(file.path, {'debug': true})
         .transform('reactify')
         .bundle(function (err, res) {
           file.contents = res;
@@ -21,7 +21,7 @@ gulp.task('browswerify', function () {
     .pipe(gulp.dest('public'))
 });
 
-gulp.task('default', ['browswerify']);
+gulp.task('default', ['browserify']);
 
 gulp.task('watch', function () {
   gulp.watch('src/**/*.*', ['default']);

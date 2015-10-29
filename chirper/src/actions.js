@@ -9,6 +9,7 @@ Object.keys(constants).forEach(function (key) {
 
   console.log('adding action; ', functionName);
   exports[functionName] = function (data) {
+    console.log('function Name: ', functionName);
     dispatcher.dispatch({
       actionType: constants[key],
       data: data

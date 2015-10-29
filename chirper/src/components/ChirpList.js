@@ -1,12 +1,21 @@
 var React = require('react'),
-  ChirpBox = require('./ChirpBox');
+  moment = require('moment'),
+  Box = require('./ChirpBox'),
+  UserStore = require('../stores/users');
 
 var ChirpList = React.createClass({
   render: function () {
 
     var items = this.props.chirps.map(function (chirp) {
       return (
-        <ChirpBox key={chirp.cid} chirp={chirp} />
+        <Box
+          key={chirp.cid}
+          user={chirp}
+          timestamp={moment(chirp.$created).fromNow()}>
+
+          {chirp.text}
+
+        </Box>
       );
     });
     return (

@@ -10,7 +10,6 @@ var API = {
   },
 
   fetchUsers: function () {
-    console.log('fetch users');
     get('/api/users')
       .then(actions.gotUsers.bind(actions));
   },
@@ -23,6 +22,16 @@ var API = {
 
     post('/api/chirps', { text: text })
       .then(actions.chirped.bind(actions));
+  },
+
+  follow: function (id) {
+    post('/api/follow/' + id)
+      .then(actions.followed.bind(actions));
+  },
+
+  unfollow: function (id) {
+    post('/api/unfollow/' + id)
+      .then(actions.unfollowed.bind(actions));
   }
 };
 
@@ -54,7 +63,13 @@ dispatcher.register(function (action) {
 
     case constants.CHIRP:
       API.saveChirp(action.data);
-      break
+      break;
+    case constants.FOLLOW:
+      API.follow(action.data);
+      break;
+    case constants.UNFOLLOW:
+      API.unfollow(action.data);
+      break;
   }
 
 })

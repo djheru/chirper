@@ -7,7 +7,6 @@ var CHANGE_EVENT = 'CHANGE';
 var storeMethods = {
   init: function () {},
   set: function (arr) {
-    console.log(this);
     var currentIds = this._data.map(function (m) { return m.cid; });
     arr.filter(function (item) {
       return (currentIds.indexOf(item.cid) === -1);

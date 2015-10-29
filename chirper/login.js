@@ -92,7 +92,27 @@ router.get('/logout', function (req, res) {
 
 router.get('/api/users', function (req, res) {
   res.json(users.toArray().map(makeUserSafe))
-})
+});
+
+router.post('/api/follow/:id', function (req, res) {
+  var id = parseInt(req.params.id, 10);
+  if (req.user.following.indexOf(id) < 0) {
+    req.user.following.push(id);
+    users.update(req.user.cid, req.user);
+  }
+  res.json(makeUserSafe(req.user));
+});
+
+router.post('/api/unfollow/:id', function (req, res) {
+  var id = parseInt(req.params.id, 10),
+    userPos = req.user.following.indexOf(id);
+
+  if (userPos >= 0) {
+    req.user.following.splice(userPos, 1);
+    users.update(req.user.cid, req.user);
+  }
+  res.json(makeUserSafe(req.user));
+});
 
 function loginRequired (req, res, next) {
   if (req.isAuthenticated()) {

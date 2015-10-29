@@ -1,5 +1,6 @@
 var React = require('react'),
-  RouteHandler = require('react-router').RouteHandler;
+  RouteHandler = require('react-router').RouteHandler,
+  Navigation = require('./Navigation');
 
 var App = React.createClass({
   render: function () {
@@ -11,7 +12,7 @@ var App = React.createClass({
 
         <div className="row">
           <div className="three columns">
-            Navigation
+            <Navigation />
           </div>
           <div className="nine columns">
             <RouteHandler />

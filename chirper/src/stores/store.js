@@ -12,11 +12,17 @@ var storeMethods = {
       return (currentIds.indexOf(item.cid) === -1);
     }).forEach(this.add.bind(this));
 
-    console.log('set data: ', this._data);
+    this.sort();
 
   },
   add: function (item) {
     this._data.push(item);
+    this.sort();
+  },
+  sort: function () {
+    this._data.sort(function (a, b) {
+      return +new Date(b.$created) - +new Date(a.$created);
+    });
   },
   all: function () {
     return this._data;

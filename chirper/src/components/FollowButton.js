@@ -3,9 +3,9 @@ var React = require('react'),
   UserStore = require('../stores/users');
 
 var FollowButton = React.createClass({
-  mixins: [
-    UserStore.mixin
-  ],
+
+  mixins: [ UserStore.mixin() ],
+
   getInitialState: function () {
     return {
       id: UserStore.currentUser.cid,

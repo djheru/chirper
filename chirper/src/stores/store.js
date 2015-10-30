@@ -54,19 +54,28 @@ var storeMethods = {
   }
 };
 
+var instanceIncrement = 0;
 exports.extend = function (methods) {
 
   var store = {
     _data: [],
     actions: {},
-    mixin: {
-      componentDidMount: function () {
-        store.addChangeListener(this.onChange);
-      },
+    mixin: function () {
+      var i = instanceIncrement++;
+      var obj = {
+        componentDidMount: function () {
+          store.addChangeListener(this['onChange' + i]);
+        },
 
-      componentWillUnmount: function () {
-        store.removeChangeListener(this.onChange);
-      },
+        componentWillUnmount: function () {
+          store.removeChangeListener(this['onChange' + i]);
+        },
+      };
+
+      obj['onChange' + i] = function () {
+        this.setState(this.getInitialState());
+      }
+      return obj;
     }
   };
 

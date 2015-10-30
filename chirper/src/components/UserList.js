@@ -6,6 +6,9 @@ var React = require('react'),
   Link = require('react-router').Link;
 
 var UserList = React.createClass({
+
+  mixins: [UserStore.mixin()],
+
   getInitialState: function () {
     return {
       users: UserStore.all(),
@@ -15,14 +18,6 @@ var UserList = React.createClass({
 
   onChange: function () {
     this.setState(this.getInitialState());
-  },
-
-  componentDidMount: function () {
-    UserStore.addChangeListener(this.onChange);
-  },
-
-  componentWillUnmount: function () {
-    UserStore.removeChangeListener(this.onChange);
   },
 
   render: function () {

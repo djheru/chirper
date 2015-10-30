@@ -6,22 +6,16 @@ var React = require('react'),
 
 var Home = React.createClass({
 
+  mixins: [ChirpStore.mixin()],
+
   getInitialState: function () {
     return {
       chirps: ChirpStore.timeline()
     };
   },
 
-  componentDidMount: function () {
-    ChirpStore.addChangeListener(this.onChange);
-  },
-
   onChange: function () {
     this.setState(this.getInitialState());
-  },
-
-  componentWillUnmount: function () {
-    ChirpStore.removeChangeListener(this.onChange);
   },
 
   render: function () {

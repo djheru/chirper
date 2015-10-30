@@ -5,6 +5,9 @@ var React = require('react'),
   FollowButton = require('./FollowButton');
 
 var UserProfile = React.createClass({
+
+  mixins: [UserStore.mixin(), ChirpStore.mixin()],
+
   getInitialState: function () {
     var id = parseInt(this.props.params.id, 10),
       user = UserStore.get(id);
@@ -17,18 +20,8 @@ var UserProfile = React.createClass({
     }
   },
 
-  componentDidMount: function () {
-    UserStore.addChangeListener(this.onChange);
-    ChirpStore.addChangeListener(this.onChange);
-  },
-
   onChange: function () {
     this.setState(this.getInitialState());
-  },
-
-  componentWillUnmount: function () {
-    UserStore.removeChangeListener(this.onChange);
-    ChirpStore.removeChangeListener(this.onChange);
   },
 
   render: function () {

@@ -3,6 +3,9 @@ var React = require('react'),
   UserStore = require('../stores/users');
 
 var FollowButton = React.createClass({
+  mixins: [
+    UserStore.mixin
+  ],
   getInitialState: function () {
     return {
       id: UserStore.currentUser.cid,
@@ -10,17 +13,10 @@ var FollowButton = React.createClass({
     };
   },
 
-  componentDidMount: function () {
-    UserStore.addChangeListener(this.onChange);
-  },
-
   onChange: function () {
     this.setState(this.getInitialState());
   },
 
-  componentWillUnmount: function () {
-    UserStore.removeChangeListener(this.onChange);
-  },
   render: function () {
     if (this.state.id === this.props.userId) {
       return (

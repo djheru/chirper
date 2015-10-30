@@ -13,17 +13,18 @@ var UserList = React.createClass({
     }
   },
 
-  componentDidMount: function () {
-    UserStore.addChangeListener(this.onChange);
-  },
-
   onChange: function () {
     this.setState(this.getInitialState());
+  },
+
+  componentDidMount: function () {
+    UserStore.addChangeListener(this.onChange);
   },
 
   componentWillUnmount: function () {
     UserStore.removeChangeListener(this.onChange);
   },
+
   render: function () {
     var items = this.state.users/*.filter(function (user) {
       return this.state.user.cid !== user.cid;

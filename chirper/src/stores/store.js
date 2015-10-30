@@ -58,7 +58,16 @@ exports.extend = function (methods) {
 
   var store = {
     _data: [],
-    actions: {}
+    actions: {},
+    mixin: {
+      componentDidMount: function () {
+        store.addChangeListener(this.onChange);
+      },
+
+      componentWillUnmount: function () {
+        store.removeChangeListener(this.onChange);
+      },
+    }
   };
 
   assign(store, EventEmitterProto, storeMethods, methods);

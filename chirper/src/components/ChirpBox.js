@@ -5,15 +5,14 @@ var React = require('react'),
 var ChirpBox = React.createClass({
   render: function () {
     var user = this.props.user,
-      userId = user.userId || user.cid,
+      id = (typeof user.userId === 'number') ? user.userId : user.cid,
       timestamp = this.props.timestamp ?
       ' ' + String.fromCharCode(8226) + ' ' + this.props.timestamp : '';
 
-    console.log('user ID: ', userId, user);
     return (
 
       <li className='row chirp'>
-        <Link className='two columns' to='user' params={ {id: userId} }>
+        <Link className='two columns' to='user' params={ {id: id} }>
           <img src={utils.avatar(user.email)} />
         </Link>
         <div className='ten columns'>

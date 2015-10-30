@@ -59,7 +59,7 @@ router.post('/signup', function (req, res, next) {
   if (users.where({ username: req.body.username }).items.length === 0) {
 
     var user = {
-      fullname: req.body.username,
+      fullname: req.body.fullname,
       email: req.body.email,
       username: req.body.username,
       passwordHash: hash(req.body.password),

@@ -3,6 +3,7 @@ var React = require('react'),
   Route = ReactRouter.Route,
   App = require('./components/App'),
   Home = require('./components/Home'),
+  UserProfile = require('./components/UserProfile'),
   UserList = require('./components/UserList'),
   API = require('./api');
 
@@ -10,13 +11,18 @@ var routes = (
   <Route handler={App}>
     <Route name='home' path='/' handler={Home} />
     <Route name='users' handler={UserList} />
-    <Route name='user' path='/user/:id' handler={Home} />
+    <Route name='user' path='/user/:id' handler={UserProfile} />
   </Route>
 );
 
-API.fetchChirps();
-API.fetchUsers();
+var initializeRouter = function () {
+  ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Root) {
+    React.render(<Root />, document.getElementById('app'));
+  });
+};
 
-ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Root) {
-  React.render(<Root />, document.getElementById('app'));
-})
+API.fetchUsers()
+  .then(API.fetchChirps)
+  .then(initializeRouter);
+
+

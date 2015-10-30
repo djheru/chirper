@@ -25,9 +25,9 @@ var UserList = React.createClass({
     UserStore.removeChangeListener(this.onChange);
   },
   render: function () {
-    var items = this.state.users.filter(function (user) {
+    var items = this.state.users/*.filter(function (user) {
       return this.state.user.cid !== user.cid;
-    }.bind(this)).map(function (user) {
+    }.bind(this))*/.map(function (user) {
       return (
         <Box
           key={user.cid}

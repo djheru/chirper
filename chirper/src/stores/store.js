@@ -7,6 +7,7 @@ var CHANGE_EVENT = 'CHANGE';
 var storeMethods = {
   init: function () {},
   set: function (arr) {
+    console.log('setting: ', arr);
     var currentIds = this._data.map(function (m) { return m.cid; });
     arr.filter(function (item) {
       return (currentIds.indexOf(item.cid) === -1);
@@ -16,7 +17,9 @@ var storeMethods = {
 
   },
   add: function (item) {
+    console.log(item);
     this._data.push(item);
+    console.log(this._data);
     this.sort();
   },
   sort: function () {
@@ -28,9 +31,10 @@ var storeMethods = {
     return this._data;
   },
   get: function (cid) {
+    console.log('this user data: ', this._data, cid);
     return this._data.filter(function (item) {
       return (item.cid === cid);
-    })[0];
+    })[0] || {};
   },
   addChangeListener: function (cb) {
     this.on(CHANGE_EVENT, cb)

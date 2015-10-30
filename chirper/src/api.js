@@ -5,12 +5,12 @@ var actions = require('./actions'),
 var API = {
 
   fetchChirps: function () {
-    get('/api/chirps')
+    return get('/api/chirps')
       .then(actions.gotChirps.bind(actions));
   },
 
-  fetchUsers: function () {
-    get('/api/users')
+  fetchUsers: function (cb) {
+    return get('/api/users')
       .then(actions.gotUsers.bind(actions));
   },
 

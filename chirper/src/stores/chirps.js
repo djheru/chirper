@@ -12,6 +12,11 @@ var constants = require('../constants'),
       return this._data.filter(function (chirp) {
         return ids.indexOf(chirp.userId) >= 0;
       });
+    },
+    byUserId: function (id) {
+      return this._data.filter(function (chirp) {
+        return chirp.userId === id;
+      });
     }
   });
 

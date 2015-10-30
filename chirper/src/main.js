@@ -21,8 +21,8 @@ var initializeRouter = function () {
   });
 };
 
-API.fetchUsers()
-  .then(API.fetchChirps)
+API.startFetchingUsers()
+  .then(API.startFetchingChirps)
   .then(initializeRouter);
 
 

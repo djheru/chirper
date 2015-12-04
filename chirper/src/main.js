@@ -15,14 +15,9 @@ var routes = (
   </Route>
 );
 
-var initializeRouter = function () {
-  ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Root) {
-    React.render(<Root />, document.getElementById('app'));
-  });
-};
+API.startFetchingUsers();
+API.startFetchingChirps();
 
-API.startFetchingUsers()
-  .then(API.startFetchingChirps)
-  .then(initializeRouter);
-
-
+ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Root) {
+  React.render(<Root />, document.getElementById('app'));
+});

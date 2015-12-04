@@ -13,4 +13,6 @@ express()
       user: login.safe(req.user)
     });
   })
-  .listen(4000);
+  .listen(4000, function () {
+    console.log('App on port 4k')
+  });

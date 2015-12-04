@@ -21,7 +21,7 @@ var API = {
 
   startFetchingUsers: function () {
     this.fetchUsers();
-    return setInterval(this.fetchUsers(), 1000);
+    return setInterval(this.fetchUsers, 1000);
   },
 
   saveChirp: function (text) {

@@ -1,6 +1,7 @@
 var express = require('express'),
   login = require('./login'),
-  chirps = require('./chirps');
+  chirps = require('./chirps'),
+  port = process.env.NODE_PORT || 3002; //Service listening here
 
 express()
   .set('view engine', 'ejs')
